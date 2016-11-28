@@ -1,0 +1,53 @@
+<!--
+  Generated template for the Profile page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding center>
+  <h1>Hello {{user.username}} you just login successfully.</h1>
+  <form (ngSubmit)="update()">
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="user.name" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="user.email" name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Phone</ion-label>
+      <ion-input type="tel" [(ngModel)]="user.phone" name="phone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Street</ion-label>
+      <ion-input type="text" [(ngModel)]="user.address.street" name="street"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>City</ion-label>
+      <ion-input type="text" [(ngModel)]="user.address.city" name="city"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Zip</ion-label>
+      <ion-input type="text" [(ngModel)]="user.address.zipcode" name="zip"></ion-input>
+    </ion-item>
+    <p>
+      <button ion-button type="submit" block>Update</button>
+    </p>
+  </form>
+  <p>
+    <button ion-button block class="button-ios-dark" (click)="contacts()">Contacts</button>
+  </p>
+  <p>
+    <button ion-button block class="button-ios-danger" (click)="logout()">Logout</button>
+  </p>
+</ion-content>
