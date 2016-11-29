@@ -13,22 +13,19 @@ import { Authentification } from "../../providers/authentification";
 })
 export class ContactsPage {
   selectedItem: any;
-  items: Array<{id: string, name: string}>;
+  items: Array<any>;
   user: Object = {};
-  contacts: Object = {};
+  contacts: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cM: ContactManager, private auth: Authentification) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private contactManager: ContactManager, private auth: Authentification) {
     this.user = auth.user;
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-    this.contacts = cM.contacts;
+    this.contacts = contactManager.contacts;
 
     this.items = [];
     for(let i = 0; i < this.contacts.length; i++) {
-      this.items.push({
-        id: this.contacts[i].id,
-        name: this.contacts[i].name
-      });
+      this.items.push(this.contacts[i]);
     }
   }
 

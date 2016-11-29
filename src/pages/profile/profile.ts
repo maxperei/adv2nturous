@@ -18,9 +18,9 @@ import { ContactManager } from "../../providers/contact-manager";
 export class Profile {
   user: Object = {};
   data: Object = {};
-  constructor(private navCtrl: NavController, private navParams: NavParams, private auth: Authentification, private cM: ContactManager) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, private auth: Authentification, private contactManager: ContactManager) {
     this.user = auth.user;
-    cM.retrieveContacts();
+    contactManager.retrieveContacts();
   }
 
   ionViewDidLoad(){
@@ -34,8 +34,8 @@ export class Profile {
   }
 
   contacts(){
-    this.data = this.cM.contacts;
-    this.cM.loadContacts(this.data);
+    this.data = this.contactManager.contacts;
+    this.contactManager.loadContacts(this.data);
     this.navCtrl.push(ContactsPage);
   }
 

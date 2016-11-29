@@ -7,11 +7,49 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding center>
  <div *ngIf="selectedItem" class="selection">
-    <b>{{selectedItem.name}}</b>
-    <div>
-      You navigated here from <b>{{selectedItem.name}}</b>
-    </div>
+    <h1>You selected : <b>{{selectedItem.name}}</b></h1>
+   <form [formGroup]="card" (ngSubmit)="logForm()">
+     <ion-item>
+       <ion-label>Username</ion-label>
+       <ion-input type="text" [(ngModel)]="selectedItem.username" formControlName="username"></ion-input>
+     </ion-item>
+     <ion-item>
+       <ion-label>Email</ion-label>
+       <ion-input type="email" [(ngModel)]="selectedItem.email" formControlName="email"></ion-input>
+     </ion-item>
+     <ion-item>
+       <ion-label>Phone</ion-label>
+       <ion-input type="tel" [(ngModel)]="selectedItem.phone" formControlName="phone"></ion-input>
+     </ion-item>
+     <ion-item>
+       <ion-label>Website</ion-label>
+       <ion-input type="text" [(ngModel)]="selectedItem.website" formControlName="website"></ion-input>
+     </ion-item>
+     <h3>Address</h3>
+     <ion-item>
+       <ion-label>Street</ion-label>
+       <ion-input type="text" [(ngModel)]="selectedItem.address.street" formControlName="street"></ion-input>
+     </ion-item>
+     <ion-item>
+       <ion-label>City</ion-label>
+       <ion-input type="text" [(ngModel)]="selectedItem.address.city" formControlName="city"></ion-input>
+     </ion-item>
+     <ion-item>
+       <ion-label>Zip</ion-label>
+       <ion-input type="text" [(ngModel)]="selectedItem.address.zipcode" formControlName="zip"></ion-input>
+     </ion-item>
+     <h3>Company</h3>
+     <ion-item>
+       <ion-label>Name</ion-label>
+       <ion-input type="text" [(ngModel)]="selectedItem.company.name" formControlName="cname"></ion-input>
+     </ion-item>
+     <ion-item>
+       <ion-label>Baseline</ion-label>
+       <ion-input type="text" [(ngModel)]="selectedItem.company.bs" formControlName="baseline"></ion-input>
+     </ion-item>
+     <button ion-button block type="submit" [disabled]="!card.valid">Submit</button>
+   </form>
   </div>
 </ion-content>
