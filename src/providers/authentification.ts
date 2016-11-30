@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Subject } from 'rxjs'
 
 /*
   Generated class for the Authentification provider.
@@ -16,6 +17,8 @@ export class Authentification {
   user: Object = {};
   id: number;
   name: string;
+  userObservable = new Subject<string>();
+  updateUser$ = this.userObservable.asObservable();
 
   constructor(public http: Http) {
     this.http = http;
@@ -34,7 +37,8 @@ export class Authentification {
     this.url = "https://jsonplaceholder.typicode.com/users/"+Math.floor((Math.random() * 10) + 1);
     this.http.get(this.url).map(res => res.json()).subscribe((data) => {
       this.user = data;
-      return this.user;
+      window.localStorage['user'] = JSON.stringify(this.user);
+      this.userObservable.next(data);
     })
   }
 

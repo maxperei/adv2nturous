@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { ItemDetailsPage } from '../item-details/item-details';
-import { ContactManager } from "../../providers/contact-manager";
 import { Authentification } from "../../providers/authentification";
+import { ContactManager } from "../../providers/contact-manager";
 
 
 @Component({
@@ -14,7 +14,7 @@ import { Authentification } from "../../providers/authentification";
 export class ContactsPage {
   selectedItem: any;
   items: Array<any>;
-  user: Object = {};
+  user: any;
   contacts: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private contactManager: ContactManager, private auth: Authentification) {
@@ -25,12 +25,13 @@ export class ContactsPage {
 
     this.items = [];
     for(let i = 0; i < this.contacts.length; i++) {
-      this.items.push(this.contacts[i]);
+      //if(this.user.id != this.contacts[i].id) {
+        this.items.push(this.contacts[i]);
+      //}
     }
   }
 
   itemTapped(event, item) {
-    console.log(item);
     this.navCtrl.push(ItemDetailsPage, {
       item: item
     });

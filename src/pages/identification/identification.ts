@@ -18,9 +18,6 @@ export class Identification {
   name: string;
 
   constructor(private navCtrl: NavController, private auth: Authentification) {
-    if(!auth.isAuth()){
-      auth.retrieveUser();
-    }
   }
 
   ionViewDidLoad(){
@@ -34,8 +31,9 @@ export class Identification {
   }
 
   login() {
-    this.data = this.auth.user;
-    this.auth.loadUser(this.data);
-    this.there();
+    this.auth.retrieveUser();
+    this.auth.updateUser$.subscribe(() => {
+      this.there();
+    });
   }
 }
