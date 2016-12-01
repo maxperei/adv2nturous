@@ -11,6 +11,9 @@
  <div *ngIf="selectedItem" class="selection">
     <h1>You selected : <b>{{selectedItem.name}}</b></h1>
    <form [formGroup]="card" (ngSubmit)="logForm()">
+     <!--<ion-item>
+       <ion-input type="hidden" [(ngModel)]="selectedItem.id" formControlName="id"></ion-input>
+     </ion-item>-->
      <ion-item>
        <ion-label>Username</ion-label>
        <ion-input type="text" [(ngModel)]="selectedItem.username" formControlName="username"></ion-input>

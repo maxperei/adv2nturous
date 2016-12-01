@@ -15,6 +15,7 @@ export class ItemDetailsPage {
   }
   ionViewDidLoad() {
     this.card = this.formBuilder.group({
+      id: [''],
       username: [''],
       email: [''],
       phone: [''],

@@ -16,11 +16,10 @@ import { ContactManager } from "../../providers/contact-manager";
   templateUrl: 'profile.html',
 })
 export class Profile {
-  user: Object = {};
-  data: Object = {};
+  user: any;
+  data: any;
   constructor(private navCtrl: NavController, private navParams: NavParams, private auth: Authentification, private contactManager: ContactManager) {
     this.user = auth.user;
-    contactManager.retrieveContacts();
   }
 
   ionViewDidLoad(){
@@ -34,9 +33,10 @@ export class Profile {
   }
 
   contacts(){
-    this.data = this.contactManager.contacts;
-    this.contactManager.loadContacts(this.data);
-    this.navCtrl.push(ContactsPage);
+    this.contactManager.retrieveContacts();
+    this.contactManager.updateKntk$.subscribe(() => {
+      this.navCtrl.push(ContactsPage);
+    })
   }
 
   update(){
