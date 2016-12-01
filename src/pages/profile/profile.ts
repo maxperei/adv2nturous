@@ -4,6 +4,7 @@ import { Authentification } from "../../providers/authentification";
 import { Identification } from "../identification/identification";
 import { ContactsPage } from "../contacts/contacts";
 import { ContactManager } from "../../providers/contact-manager";
+import { Subject } from 'rxjs';
 
 /*
   Generated class for the Profile page.
@@ -18,6 +19,7 @@ import { ContactManager } from "../../providers/contact-manager";
 export class Profile {
   user: any;
   data: any;
+  subscribe: any;
   constructor(private navCtrl: NavController, private navParams: NavParams, private auth: Authentification, private contactManager: ContactManager) {
     this.user = auth.user;
   }
@@ -32,10 +34,12 @@ export class Profile {
     this.navCtrl.setRoot(Identification);
   }
 
+
   contacts(){
     this.contactManager.retrieveContacts();
-    this.contactManager.updateKntk$.subscribe(() => {
+    this.subscribe = this.contactManager.updateKntk$.subscribe(() => {
       this.navCtrl.push(ContactsPage);
+      this.subscribe.unsubscribe();
     })
   }
 
