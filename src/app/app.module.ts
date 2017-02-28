@@ -3,24 +3,24 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { CustomPage } from '../pages/custom-page/custom-page';
 import { Identification } from '../pages/identification/identification';
 import { Profile } from "../pages/profile/profile";
 import { Authentification } from "../providers/authentification";
-import {ContactManager} from "../providers/contact-manager";
-import {ContactsPage} from "../pages/contacts/contacts";
-import {TabsPage} from "../pages/tabs/tabs";
+import { ContactManager } from "../providers/contact-manager";
+import { ContactsPage } from "../pages/contacts/contacts";
+import { TabsPage } from "../pages/tabs/tabs";
+import { AddContactPage } from "../pages/add-contact/add-contact";
 
 @NgModule({
   declarations: [
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    CustomPage,
     ContactsPage,
     Identification,
     Profile,
-    TabsPage
+    TabsPage,
+    AddContactPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -30,11 +30,11 @@ import {TabsPage} from "../pages/tabs/tabs";
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    CustomPage,
     ContactsPage,
     Identification,
     Profile,
-    TabsPage
+    TabsPage,
+    AddContactPage
   ],
   providers: [
     Authentification,

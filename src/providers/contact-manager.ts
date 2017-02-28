@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 */
 @Injectable()
 export class ContactManager {
-  contacts: Object = {};
+  contacts: Array<any>;
   url: string;
   kntkObservable = new Subject<string>();
   updateKntk$ = this.kntkObservable.asObservable();
@@ -21,8 +21,16 @@ export class ContactManager {
       this.contacts = JSON.parse(window.localStorage['contacts']);
     }
   }
+
   loadContacts(data){
     this.contacts = data;
+    window.localStorage['contacts'] = JSON.stringify(this.contacts);
+  }
+
+  newContact(data){
+    console.log(data);
+    this.contacts.push(data);
+    console.log(this.contacts);
     window.localStorage['contacts'] = JSON.stringify(this.contacts);
   }
 

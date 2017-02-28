@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { ItemDetailsPage } from '../item-details/item-details';
+import { AddContactPage } from "../add-contact/add-contact";
 import { Authentification } from "../../providers/authentification";
 import { ContactManager } from "../../providers/contact-manager";
 
@@ -35,5 +36,9 @@ export class ContactsPage {
     this.navCtrl.push(ItemDetailsPage, {
       item: item
     });
+  }
+
+  addContact(){
+    this.navCtrl.push(AddContactPage)
   }
 }

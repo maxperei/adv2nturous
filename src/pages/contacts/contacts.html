@@ -7,11 +7,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon name="person" item-left></ion-icon>
-      {{item.name}} <b *ngIf="user.id == item.id">(Me)</b>
+      {{item.username}} <b *ngIf="user.id == item.id">(Me)</b>
     </button>
   </ion-list>
+  <button ion-button block class="button-ios-dark" (click)="addContact()">Add contact</button>
 </ion-content>

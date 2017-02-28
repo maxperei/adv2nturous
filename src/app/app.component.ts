@@ -5,11 +5,9 @@ import {Platform, MenuController, Nav, IonicApp} from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { CustomPage } from '../pages/custom-page/custom-page';
 import { ContactsPage } from '../pages/contacts/contacts';
 import { Identification } from "../pages/identification/identification";
 import { Profile } from "../pages/profile/profile";
-import { TabsPage } from "../pages/tabs/tabs";
 
 @Component({
   templateUrl: 'app.html'
@@ -29,7 +27,6 @@ export class MyApp {
         {title: 'Identification', component: Identification},
         {title: 'Profile', component: Profile},
         {title: 'Hello Ionic', component: HelloIonicPage},
-        {title: 'Custom Page', component: CustomPage, params: {'gianni': 'guigou'}},
         {title: 'Contacts', component: ContactsPage}
       ];
   }
